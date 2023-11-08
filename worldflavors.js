@@ -86,3 +86,11 @@ app.post("/cadastroproduto", async (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
+
+
+if(estoque>41){
+  prompt("maximo limite do estoque atinjido")
+}
+if(estoque<0){
+  prompt("impossivel realizar ação infome um numero maior que 0")
+}
