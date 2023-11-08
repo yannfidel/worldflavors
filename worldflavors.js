@@ -18,19 +18,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/worldflavors", {
 
 //criando a model do seu projeto
 const UsuarioSchema = new mongoose.Schema({
-  email: { type: String },
+  email: { type: String, required: true },
   senha: { type: String },
 });
 
 const ProdutoExotico = new mongoose.Schema({
-  idProdutoExotico: { type: String },
+  idProdutoExotico: { type: String, required: true },
   descricao: { type: String },
   fornecedor: { type: String },
   dataFabri: { type: String },
   estoque: { type: Number }
 });
 
-const Produto = mongoose.model("Produto", ProdutoArtificial);
+const Produto = mongoose.model("Produto", ProdutoExotico);
 const Usuario = mongoose.model("Usuario", UsuarioSchema);
 
 //configuração dos roteamendos
@@ -75,11 +75,11 @@ app.post("/cadastroproduto", async (req, res) => {
 });
 
 //rota de get de formulario
-app.get("/cadastrousuario", async (req, res) => {
+app.post("/cadastrousuario", async (req, res) => {
   res.sendFile(__dirname + "/cadastrousuario.html");
 });
 
-app.get("/cadastroproduto", async (req, res) => {
+app.post("/cadastroproduto", async (req, res) => {
   res.sendFile(__dirname + "/cadastroproduto.html");
 });
 
